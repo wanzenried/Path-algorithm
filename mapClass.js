@@ -8,6 +8,7 @@ class Map {
   }
 
   createRandomPoints(_points) {
+    this.clearConnections();
     this.points = _points;
     for (var i = 0; i < this.points; i++) {
       this.pointList[i] = createVector(floor(random(width)), floor(random(height))); //places points at random
@@ -59,6 +60,7 @@ class Map {
   }
 
   randomConnections(_amount) {
+    this.clearConnections();
     for (var i = 0; i < this.pointList.length; i++) {
       for (var j = 0; j < _amount; j++) {
         this.pointConnections[i][j] = floor(random(this.pointList.length));
@@ -67,6 +69,7 @@ class Map {
   }
 
   closestConnections(_amount) {
+    this.clearConnections();
     if (_amount < this.pointList.length - 1) {
 
       for (var i = 0; i < this.pointList.length; i++) { //iterate through all points
