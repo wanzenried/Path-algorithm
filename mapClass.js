@@ -33,7 +33,7 @@ class Map {
   }
 
   displayPoints() {
-    for (var i = 0; i < this.points; i++) {
+    for (var i = 0; i < this.pointList.length; i++) {
       //circle(this.pointList[i].x, this.pointList[i].y, 10);
       text(i, this.pointList[i].x, this.pointList[i].y);
 
@@ -41,7 +41,7 @@ class Map {
   }
 
   displayLines() {
-    for (var i = 0; i < this.points; i++) {
+    for (var i = 0; i < this.pointList.length; i++) {
       let x1 = this.pointList[i].x;
       let y1 = this.pointList[i].y;
       for (var j = 0; j < this.pointConnections[i].length; j++) {
@@ -51,5 +51,15 @@ class Map {
       }
     }
   }
+
+  randomConnections(_amount) {
+    for (var i = 0; i < this.pointList.length; i++) {
+      for (var j = 0; j < _amount; j++) {
+        this.pointConnections[i][j] = floor(random(this.pointList.length));
+      }
+    }
+  }
+
+  
 
 }
