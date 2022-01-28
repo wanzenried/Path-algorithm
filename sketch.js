@@ -46,8 +46,8 @@ function draw() {
   fill(255);
 
   background(150);
-  map.displayPoints();
   map.displayLines();
+  map.displayPoints();
 
   fill(255, 0, 0);
   text(floor((millis() - ms) * 1000), 10, 10);
