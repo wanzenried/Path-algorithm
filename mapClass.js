@@ -75,15 +75,17 @@ class Map {
     if (_amount < this.pointList.length - 1) {
 
       for (var i = 0; i < this.pointList.length; i++) { //iterate through all points
-        let x1 = this.pointList[i].x;
-        let y1 = this.pointList[i].y;
+        // let x1 = this.pointList[i].x;
+        // let y1 = this.pointList[i].y;
+        let p1 = this.pointList[i];
 
         //get distance to all other points
         let distToPoints = [];
         for (var j = 0; j < this.pointList.length; j++) {
-          let x2 = this.pointList[j].x;
-          let y2 = this.pointList[j].y;
-          distToPoints[j] = distTwoPoints(x1, y1, x2, y2);
+          // let x2 = this.pointList[j].x;
+          // let y2 = this.pointList[j].y;
+          let p2 = this.pointList[j];
+          distToPoints[j] = distTwoPoints(p1, p2);
         }
         let sortedDist = [];
         arrayCopy(distToPoints, sortedDist);

@@ -1,6 +1,6 @@
-function distTwoPoints(x1, y1, x2, y2) {
-  let xDif = x1 - x2;
-  let yDif = y1 - y2;
+function distTwoPoints(_p1, _p2) {
+  let xDif = _p1.x - _p2.x;
+  let yDif = _p1.y - _p2.y;
   let dist = sqrt((xDif * xDif) + (yDif * yDif));
   return dist;
 }
