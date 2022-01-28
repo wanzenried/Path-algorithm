@@ -98,6 +98,8 @@ class Map {
     }
   }
 
+closestConnectionsNoDoubles(_amount){
 
+}
 
 }
