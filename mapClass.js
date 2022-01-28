@@ -32,6 +32,12 @@ class Map {
     }
   }
 
+  clearConnections(){
+    for (var i = 0; i < this.pointConnections.length; i++) {
+      this.pointConnections[i] = [];
+    }
+  }
+
   displayPoints() {
     for (var i = 0; i < this.pointList.length; i++) {
       //circle(this.pointList[i].x, this.pointList[i].y, 10);
