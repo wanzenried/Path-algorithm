@@ -60,6 +60,40 @@ class Map {
     }
   }
 
-  
+  closestConnections(_amount) {
+    if (_amount < this.pointList.length - 1) {
+
+      for (var i = 0; i < this.pointList.length; i++) { //iterate through all points
+        let x1 = this.pointList[i].x;
+        let y1 = this.pointList[i].y;
+
+        //get distance to all other points
+        let distToPoints = [];
+        for (var j = 0; j < this.pointList.length; j++) {
+          let x2 = this.pointList[j].x;
+          let y2 = this.pointList[j].y;
+          distToPoints[j] = distTwoPoints(x1, y1, x2, y2);
+          // distToPoints[j] = sqrt((pointList[i].x - pointList[j].x) * (pointList[i].x - pointList[j].x) + (pointList[i].y - pointList[j].y) * (pointList[i].y - pointList[j].y));
+        }
+        distToPoints.splice(i,1);
+        let sortedDist = [];
+        arrayCopy(distToPoints, sortedDist);
+        sortedDist.sort(function(a, b) {
+          return a - b;
+        });
+        //console.log(i);
+        // console.log(distToPoints);
+        // console.log(distToPointsCopy);
+
+        for (var j = 0; j < _amount; j++) {
+
+          this.pointConnections[i][j] = distToPoints.indexOf(sortedDist[j]);
+          // console.log(distToPoints.indexOf(distToPointsCopy[j+1]));
+        }
+      }
+    }
+  }
+
+
 
 }
