@@ -1,6 +1,7 @@
 class Map {
   constructor() {
     this.pointList = [];
+    this.points =0;
     //this.createRandomPoints(_points);
 
   }
