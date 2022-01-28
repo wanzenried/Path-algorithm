@@ -37,6 +37,7 @@ function draw() {
 
   background(150);
   map.displayPoints();
+  map.displayLines();
   //draw points and their connections
   /*for (var i = 0; i < pointList.length; i++) {
     //circle(pointList[i].x, pointList[i].y, 10);
