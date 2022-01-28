@@ -18,7 +18,15 @@ class PathFinder {
 
   stepTowardFinish(_start){
     for (var i = 0; i < this.map.pointConnections[_start].length; i++) {
-      console.log(this.map.pointConnections[_start][i]);
+      let point = this.map.pointConnections[_start][i];
+      console.log(point);
+      let distToPoint = distTwoPoints(this.map.pointList[_start], this.map.pointList[point]);
+      let distToFinish = distTwoPoints(this.map.pointList[point], this.map.pointList[this.finish]);
+      let tot = distToPoint+distToFinish;
+      console.log(distToPoint);
+      console.log(distToFinish);
+      console.log(tot);
+
     }
   }
 }
