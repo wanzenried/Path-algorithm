@@ -1,6 +1,7 @@
 let ms = 0;
 
 let map;
+let p;
 
 function setup() {
   createCanvas(800, 800);
@@ -34,6 +35,8 @@ function setup() {
   map.addConnection(9,6);
   map.addConnection(4,9);
 
+  p = new PathFinder();
+  p.loadMap(map);
 
   textSize(12);
 }
