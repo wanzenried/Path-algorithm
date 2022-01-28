@@ -17,9 +17,16 @@ class Map {
     this.points +=1;
   }
 
+  deletePoint(_index){
+    if(_index >-1){
+      this.pointList.splice(_index,1);
+      this.points -=1;
+    }
+  }
+
   displayPoints(){
     for (var i = 0; i < this.points; i++) {
-      //circle(pointList[i].x, pointList[i].y, 10);
+      //circle(this.pointList[i].x, this.pointList[i].y, 10);
       text(i,this.pointList[i].x, this.pointList[i].y);
 
     }
