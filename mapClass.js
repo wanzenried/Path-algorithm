@@ -9,6 +9,7 @@ class Map {
 
   createRandomPoints(_points) {
     this.clearConnections();
+    this.pointList =[];
     this.points = _points;
     for (var i = 0; i < this.points; i++) {
       this.pointList[i] = createVector(floor(random(width)), floor(random(height))); //places points at random
@@ -84,7 +85,6 @@ class Map {
           distToPoints[j] = distTwoPoints(x1, y1, x2, y2);
           // distToPoints[j] = sqrt((pointList[i].x - pointList[j].x) * (pointList[i].x - pointList[j].x) + (pointList[i].y - pointList[j].y) * (pointList[i].y - pointList[j].y));
         }
-        distToPoints.splice(i,1);
         let sortedDist = [];
         arrayCopy(distToPoints, sortedDist);
         sortedDist.sort(function(a, b) {
@@ -93,10 +93,9 @@ class Map {
         //console.log(i);
         // console.log(distToPoints);
         // console.log(distToPointsCopy);
-
         for (var j = 0; j < _amount; j++) {
 
-          this.pointConnections[i][j] = distToPoints.indexOf(sortedDist[j]);
+          this.pointConnections[i][j] = distToPoints.indexOf(sortedDist[j+1]);
           // console.log(distToPoints.indexOf(distToPointsCopy[j+1]));
         }
       }
