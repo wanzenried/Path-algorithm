@@ -12,7 +12,14 @@ function setup() {
   background(150);
 
   map = new Map();
-  map.createRandomPoints(10);
+  map.addPoint(200,200);
+  map.addPoint(300,300);
+  map.addPoint(400,100);
+  map.addPoint(500,200);
+  map.addPoint(100,300);
+  map.addPoint(200,400);
+  map.addPoint(400,500);
+  map.addPoint(700,700);
 
   /*for (var i = 0; i < points; i++) {
     pointList[i] = createVector(floor(random(width)), floor(random(height))); //places points at random
