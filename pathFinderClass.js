@@ -14,6 +14,5 @@ class PathFinder {
       this.finish = _finish;
       this.shortestDist = distTwoPoints(this.map.pointList[_start].x, this.map.pointList[_start].y, this.map.pointList[_finish].x, this.map.pointList[_finish].y);
     }
-
   }
 }
