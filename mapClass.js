@@ -25,6 +25,7 @@ class Map {
 
   addConnection(_p1, _p2) {
     this.pointConnections[_p1].push(_p2);
+    this.pointConnections[_p2].push(_p1);
   }
 
   deletePoint(_index) {
@@ -98,6 +99,8 @@ class Map {
     }
   }
 
+closestConnectionsNoDoubles(_amount){
 
+}
 
 }
