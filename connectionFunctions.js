@@ -1,5 +1,10 @@
 //connects to random points
 function randomConnections() {
+  for (var i = 0; i < points; i++) {
+    for (var j = 0; j < pointConnections; j++) {
+      connectedPoints[i][j] = floor(random(points));
+    }
+  }
 
 }
 
