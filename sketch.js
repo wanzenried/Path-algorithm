@@ -11,7 +11,8 @@ function setup() {
   createCanvas(800, 800);
   background(150);
 
-  map = new Map(points);
+  map = new Map();
+  map.createRandomPoints(10);
 
   /*for (var i = 0; i < points; i++) {
     pointList[i] = createVector(floor(random(width)), floor(random(height))); //places points at random
