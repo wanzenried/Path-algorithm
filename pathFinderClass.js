@@ -1,5 +1,6 @@
 class PathFinder {
   constructor() {
+    this.routeSet = false;
 
   }
 
@@ -13,6 +14,19 @@ class PathFinder {
       this.start = _start;
       this.finish = _finish;
       this.shortestDist = distTwoPointsRel(this.map.pointList[_start], this.map.pointList[_finish]);
+      this.routeSet = true;
+    }
+  }
+
+  displayRoute(){
+    if (this.routeSet) {
+      fill(0,255,0);
+      circle(this.map.pointList[this.start].x, this.map.pointList[this.start].y, 10);
+      // text(this.start, this.map.pointList[this.start].x, this.map.pointList[this.start].y);
+
+      fill(255,0,0);
+      circle(this.map.pointList[this.finish].x, this.map.pointList[this.finish].y, 10);
+      // text(this.finish, this.map.pointList[this.finish].x, this.map.pointList[this.finish].y);
     }
   }
 
@@ -39,9 +53,9 @@ class PathFinder {
     return nextPoint;
   }
 
-  autoStep(_start, _maxSteps){
+  autoStep( _maxSteps){
     let steps = [];
-    let lastStep = _start;
+    let lastStep = this.start;
     for (var i = 0; i < _maxSteps; i++) {
       steps[i] = this.stepTowardFinish(lastStep);
       lastStep = steps[i];
