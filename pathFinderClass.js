@@ -17,16 +17,39 @@ class PathFinder {
   }
 
   stepTowardFinish(_start){
+    let shortestDist = -1;
+    let nextPoint = -1;
     for (var i = 0; i < this.map.pointConnections[_start].length; i++) {
       let point = this.map.pointConnections[_start][i];
-      console.log(point);
-      let distToPoint = distTwoPointsRel(this.map.pointList[_start], this.map.pointList[point]);
-      let distToFinish = distTwoPointsRel(this.map.pointList[point], this.map.pointList[this.finish]);
+      // console.log("p"+point);
+      let distToPoint = distTwoPointsAbs(this.map.pointList[_start], this.map.pointList[point]);
+      let distToFinish = distTwoPointsAbs(this.map.pointList[point], this.map.pointList[this.finish]);
       let tot = distToPoint+distToFinish;
-      console.log(distToPoint);
-      console.log(distToFinish);
-      console.log(tot);
+      // console.log(distToPoint);
+      // console.log(distToFinish);
+      // console.log("dist "+tot);
+      // console.log(shortestDist);
+      if (tot < shortestDist || shortestDist == -1) {
+        shortestDist = tot;
+        nextPoint = this.map.pointConnections[_start][i];
+        // console.log("ping");
+      }
 
     }
+    return nextPoint;
   }
+
+  autoStep(_start, _maxSteps){
+    let steps = [];
+    let lastStep = _start;
+    for (var i = 0; i < _maxSteps; i++) {
+      steps[i] = this.stepTowardFinish(lastStep);
+      lastStep = steps[i];
+      if (lastStep == this.finish) {
+        break;
+      }
+    }
+    return steps;
+  }
+
 }
