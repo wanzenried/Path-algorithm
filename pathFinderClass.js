@@ -1,6 +1,7 @@
 class PathFinder {
   constructor() {
     this.routeSet = false;
+    this.route = [];
 
   }
 
@@ -27,6 +28,14 @@ class PathFinder {
       fill(255,0,0);
       circle(this.map.pointList[this.finish].x, this.map.pointList[this.finish].y, 10);
       // text(this.finish, this.map.pointList[this.finish].x, this.map.pointList[this.finish].y);
+      stroke(0,255,0);
+      for (var i = 0; i < this.route.length-1; i++) {
+        let x1 = this.map.pointList[this.route[i]].x;
+        let y1 = this.map.pointList[this.route[i]].y;
+        let x2 = this.map.pointList[this.route[i+1]].x;
+        let y2 = this.map.pointList[this.route[i+1]].y;
+        line(x1, y1, x2, y2);
+      }
     }
   }
 
@@ -55,14 +64,17 @@ class PathFinder {
 
   autoStep( _maxSteps){
     let steps = [];
-    let lastStep = this.start;
+    steps.push(this.start)
+    // let lastStep = this.start;
     for (var i = 0; i < _maxSteps; i++) {
-      steps[i] = this.stepTowardFinish(lastStep);
-      lastStep = steps[i];
-      if (lastStep == this.finish) {
+      steps.push(this.stepTowardFinish(steps[i]));
+      // lastStep = steps[i];
+      if (steps[i+1] == this.finish) {
         break;
       }
     }
+    this.route = [];
+    arrayCopy(steps,this.route);
     return steps;
   }
 

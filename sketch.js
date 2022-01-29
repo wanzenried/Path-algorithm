@@ -44,6 +44,9 @@ function setup() {
 function draw() {
   ms = millis();
   fill(255);
+  stroke(0);
+
+
 
   background(150);
   map.displayLines();
@@ -51,6 +54,7 @@ function draw() {
 
   p.displayRoute();
 
+  noStroke();
   fill(255, 0, 0);
   text(floor((millis() - ms) * 1000), 10, 10);
 }
