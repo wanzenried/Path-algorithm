@@ -36,7 +36,7 @@ function setup() {
   map.addConnection(4,9);
 
   p = new PathFinder();
-  // p.loadMap(map);
+  p.loadMap(map);
 
   textSize(12);
 }
