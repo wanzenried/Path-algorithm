@@ -85,7 +85,7 @@ class Map {
           // let x2 = this.pointList[j].x;
           // let y2 = this.pointList[j].y;
           let p2 = this.pointList[j];
-          distToPoints[j] = distTwoPoints(p1, p2);
+          distToPoints[j] = distTwoPointsRel(p1, p2);
         }
         let sortedDist = [];
         arrayCopy(distToPoints, sortedDist);
