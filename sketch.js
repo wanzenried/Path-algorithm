@@ -4,7 +4,7 @@ let map;
 let p;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1000, 1000);
   background(150);
 
   map = new Map();
@@ -48,6 +48,8 @@ function draw() {
   background(150);
   map.displayLines();
   map.displayPoints();
+
+  p.displayRoute();
 
   fill(255, 0, 0);
   text(floor((millis() - ms) * 1000), 10, 10);
