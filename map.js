@@ -30,4 +30,12 @@ class Map {
     this.map[pointX][pointY] = nl-1;
 
   }
+  //add x amount of randomly placed points to the map
+  addRandomPoint(amount){
+    for (var i = 0; i < amount; i++){
+      let x = Math.floor(Math.random()*this.mapWidth);
+      let y = Math.floor(Math.random()*this.mapHeight);
+      this.addPoint(x,y);
+    }
+  }
 }
