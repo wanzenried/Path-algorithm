@@ -19,14 +19,15 @@ class Map {
     if(!((pointX >= 0 && pointX < this.mapWidth) && (pointY >= 0 && pointY < this.mapHeight))){
       throw "point is outside map";
     }
+    // define new point object
     let newPoint = {
       x: pointX,
       y: pointY
     };
+    //add new point to point list
     let nl = this.points.push(newPoint);
-    console.log(nl-1);
-
-    this.map[pointX][pointY] = nl;
+    //add to reverse searh
+    this.map[pointX][pointY] = nl-1;
 
   }
 }
