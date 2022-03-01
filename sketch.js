@@ -1,10 +1,10 @@
 function setup() {
   createCanvas(800,800);
   background(230);
+  noLoop();
 
 }
 
-// no need for loops for now
-/*function draw() {
+function draw() {
 
-}*/
+}
