@@ -11,6 +11,7 @@ function setup() {
 }
 
 function draw() {
+  background(230);
 
   for (var i = 0; i < m.points.length; i++) {
     circle(m.points[i].x  ,m.points[i].y,5);
