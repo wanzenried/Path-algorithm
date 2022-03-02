@@ -38,4 +38,55 @@ class Map {
       this.addPoint(x,y);
     }
   }
+
+  getClosestPoint(x, y){
+
+  }
+
+  spiralPerimeter(middleX, middleY, s){
+
+    if(s%2 != 1){
+      throw "sidelength must be an odd number";
+    }
+
+    let perimeterPoints = [];
+
+    if(s == 1){
+      perimeterPoints.push({x: middleX, y: middleY});
+      return perimeterPoints;
+    }
+
+    let cornerDist = (s-1)/2;
+    let xMax = middleX + cornerDist;
+    let xMin = middleX - cornerDist;
+    let yMax = middleY + cornerDist;
+    let yMin = middleY - cornerDist;
+
+    let currentX = xMin;
+    let currentY = yMin;
+
+    for(currentX; currentX < xMax; currentX++){
+      if((currentX >= 0 && currentX < this.mapWidth) && (currentY >= 0 && currentY < this.mapHeight)){
+        perimeterPoints.push({x: currentX, y: currentY});
+      }
+    }
+    for(currentY; currentY < yMax; currentY++){
+      if((currentX >= 0 && currentX < this.mapWidth) && (currentY >= 0 && currentY < this.mapHeight)){
+        perimeterPoints.push({x: currentX, y: currentY});
+      }
+    }
+    for(currentX; currentX > xMin; currentX--){
+      if((currentX >= 0 && currentX < this.mapWidth) && (currentY >= 0 && currentY < this.mapHeight)){
+        perimeterPoints.push({x: currentX, y: currentY});
+      }
+    }
+    for(currentY; currentY > yMin; currentY--){
+      if((currentX >= 0 && currentX < this.mapWidth) && (currentY >= 0 && currentY < this.mapHeight)){
+        perimeterPoints.push({x: currentX, y: currentY});
+      }
+    }
+
+    return perimeterPoints;
+
+  }
 }
