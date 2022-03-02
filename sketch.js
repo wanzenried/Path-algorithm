@@ -5,6 +5,7 @@ function setup() {
   background(230);
 
   m = new Map(width, height);
+  m.addRandomPoint(2);
 
   noLoop();
 
