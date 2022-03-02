@@ -40,6 +40,7 @@ class Map {
   }
 
   getClosestPoint(pX, pY, _i){
+    fill(255,0,0);
     // need to make a func for deciding amount of iterations
     let steps = _i;
     let closestPoints = [];
@@ -48,6 +49,7 @@ class Map {
       let points = this.spiralPerimeter(pX, pY, i);
 
       for (let j = 0; j < points.length; j++) {
+        circle(points[j].x,points[j].y,1);
         let point = this.map[points[j].x][points[j].y];
         if (point >= 0){
           closestPoints.push(point);
