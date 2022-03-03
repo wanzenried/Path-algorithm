@@ -7,13 +7,13 @@ function setup() {
   m = new Map(width, height);
   m.addRandomPoint(2);
 
-  noStroke();
   noLoop();
 
 }
 
 function draw() {
   background(110);
+  stroke(0);
   fill(255);
 
   for (var i = 0; i < m.points.length; i++) {
