@@ -1,5 +1,5 @@
 let m;
-let border = 50;
+let border = 15;
 
 function setup() {
   createCanvas(900,900);
@@ -23,6 +23,11 @@ function draw() {
 
   for (var i = 0; i < m.points.length; i++) {
     circle(m.points[i].x  ,m.points[i].y,5);
+  }
+  for (var i = 0; i < m.points.length; i++) {
+    for (var j = 0; j < m.points[i].connections.length; j++) {
+      line(m.points[i].x,m.points[i].y, m.points[m.points[i].connections[j]].x, m.points[m.points[i].connections[j]].y);
+    }
   }
 
 }

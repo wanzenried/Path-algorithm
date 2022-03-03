@@ -82,6 +82,7 @@ class Map {
       stroke(0);
       fill(0,255,0);
       circle(point.x, point.y,5);
+      text(point.pointNr, point.x, point.y);
     }
 
     return point;
@@ -193,8 +194,8 @@ class Map {
     let middlePoint = {x: mX, y: mY};
 
     if (visualise){
-      fill (255,0,0,30);
-      stroke (255,0,0,30);
+      fill (255,0,0,50);
+      stroke (255,0,0,50);
       line(p1.x,p1.y,p2.x,p2.y);
       circle(middlePoint.x, middlePoint.y, 3);
     }
