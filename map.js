@@ -24,7 +24,8 @@ class Map {
     // define new point object
     let newPoint = {
       x: pointX,
-      y: pointY
+      y: pointY,
+      connections: []
     };
     //add new point to point list
     let nl = this.points.push(newPoint);
@@ -84,6 +85,54 @@ class Map {
     }
 
     return point;
+
+  }
+
+  getClosestPoints(pX,pY, amount, visualise){
+    if (amount > this.points.length -1) throw "amount bigger than available points"
+
+    if (visualise){
+      noStroke();
+      fill(255,0,0, 30);
+    }
+    // need to make a func for deciding amount of iterations
+    let steps = this.mapHeight;
+    let closestPoints = [];
+    for(let i = 3; i < (steps*2)+3; i+=2){
+      //console.log(i);
+      let points = this.spiralPerimeter(pX, pY, i);
+
+      for (let j = 0; j < points.length; j++) {
+        if (visualise) circle(points[j].x,points[j].y,1);
+        let point = this.map[points[j].x][points[j].y];
+        if (point >= 0){
+          closestPoints.push(point);
+        }
+      }
+
+      if (closestPoints.length >= amount){
+        break;
+      }
+    }
+
+    /*let shortestDist = this.longestDistTwoPoints + 1;
+    let point;
+    for (let i = 0; i < closestPoints.length; i++) {
+      let currentPoint = this.points[closestPoints[i]];
+      let dist = Math.sqrt( (currentPoint.x - pX)**2 + (currentPoint.y - pY)**2 );
+      if(dist < shortestDist){
+        shortestDist = dist;
+        point = {x: currentPoint.x, y: currentPoint.y, pointNr: closestPoints[i], dist: dist};
+      }
+    }
+
+    if (visualise) {
+      stroke(0);
+      fill(0,255,0);
+      circle(point.x, point.y,5);
+    }*/
+
+    return closestPoints;
 
   }
 
@@ -150,6 +199,18 @@ class Map {
       circle(middlePoint.x, middlePoint.y, 3);
     }
 
-    return middlePoint;
+    let closest = this.getClosestPoint(middlePoint.x, middlePoint.y, visualise);
+
+    return closest;
+  }
+
+  addClosestConnections(amount){
+    for (let i = 0; i < this.points.length; i++) {
+      let currentPoint = this.points[i];
+      let closestPoints = this.getClosestPoints(currentPoint.x, currentPoint.y, amount, false);
+      for (let j = 0; j < amount; j++){
+        this.points[i].connections.push(closestPoints[j]);
+      }
+    }
   }
 }
