@@ -41,13 +41,13 @@ class Map {
     }
   }
 
-  getClosestPoint(pX, pY, _i, visualise){
+  getClosestPoint(pX, pY, visualise){
     if (visualise){
       noStroke();
       fill(255,0,0, 30);
     }
     // need to make a func for deciding amount of iterations
-    let steps = _i;
+    let steps = this.mapHeight;
     let closestPoints = [];
     for(let i = 3; i < (steps*2)+3; i+=2){
       //console.log(i);
@@ -132,5 +132,24 @@ class Map {
 
     return perimeterPoints;
 
+  }
+
+  getMiddlePoint(p1, p2, visualise){
+    if (!p1.hasOwnProperty("x") || !p1.hasOwnProperty("y")) throw "p1 is not a point";
+    if (!p2.hasOwnProperty("x") || !p2.hasOwnProperty("y")) throw "p2 is not a point";
+
+    let mX = Math.floor((p1.x + p2.x) /2);
+    let mY = Math.floor((p1.y + p2.y) /2);
+
+    let middlePoint = {x: mX, y: mY};
+
+    if (visualise){
+      fill (255,0,0,30);
+      stroke (255,0,0,30);
+      line(p1.x,p1.y,p2.x,p2.y);
+      circle(middlePoint.x, middlePoint.y, 3);
+    }
+
+    return middlePoint;
   }
 }
