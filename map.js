@@ -44,7 +44,7 @@ class Map {
   getClosestPoint(pX, pY, _i, visualise){
     if (visualise){
       noStroke();
-      fill(255,0,0, 127);
+      fill(255,0,0, 30);
     }
     // need to make a func for deciding amount of iterations
     let steps = _i;
@@ -75,6 +75,12 @@ class Map {
         shortestDist = dist;
         point = {x: currentPoint.x, y: currentPoint.y, pointNr: closestPoints[i], dist: dist};
       }
+    }
+
+    if (visualise) {
+      stroke(0);
+      fill(0,255,0);
+      circle(point.x, point.y,5);
     }
 
     return point;
