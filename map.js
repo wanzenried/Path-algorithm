@@ -2,6 +2,8 @@ class Map {
   constructor(mapWidth, mapHeight) {
     this.mapWidth = mapWidth;
     this.mapHeight = mapHeight;
+
+    this.longestDistTwoPoints = Math.sqrt((this.mapWidth**2)+(this.mapHeight**2));
     //create list to contain points
     this.points = [];
     //create the map, with no points
@@ -39,8 +41,11 @@ class Map {
     }
   }
 
-  getClosestPoint(pX, pY, _i){
-    fill(255,0,0);
+  getClosestPoint(pX, pY, _i, visualise){
+    if (visualise){
+      noStroke();
+      fill(255,0,0, 127);
+    }
     // need to make a func for deciding amount of iterations
     let steps = _i;
     let closestPoints = [];
@@ -49,7 +54,7 @@ class Map {
       let points = this.spiralPerimeter(pX, pY, i);
 
       for (let j = 0; j < points.length; j++) {
-        circle(points[j].x,points[j].y,1);
+        if (visualise) circle(points[j].x,points[j].y,1);
         let point = this.map[points[j].x][points[j].y];
         if (point >= 0){
           closestPoints.push(point);
@@ -61,7 +66,18 @@ class Map {
       }
     }
 
-    return closestPoints;
+    let shortestDist = this.longestDistTwoPoints + 1;
+    let point;
+    for (let i = 0; i < closestPoints.length; i++) {
+      let currentPoint = this.points[closestPoints[i]];
+      let dist = Math.sqrt( (currentPoint.x - pX)**2 + (currentPoint.y - pY)**2 );
+      if(dist < shortestDist){
+        shortestDist = dist;
+        point = {x: currentPoint.x, y: currentPoint.y, pointNr: closestPoints[i], dist: dist};
+      }
+    }
+
+    return point;
 
   }
 
